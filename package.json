@@ -14,9 +14,7 @@
     "style": "stylus -w ./src/style/style.styl -o ./src/style/style.css",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.84.0"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

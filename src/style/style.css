@@ -4,15 +4,23 @@
   flex-direction: column;
   align-items: center;
 }
+.wrapper .titleEditForm {
+  font-size: 25px;
+  margin: 15px 0;
+}
 .wrapper .tableEditForm {
-  width: 75%;
+  width: 50%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-.wrapper .tableEditForm .error {
+.wrapper .error {
+  margin-top: 10px;
+  height: 25px;
   color: #f00;
+  font-size: 20px;
 }
 .wrapper .table {
   width: 75%;
-  margin-top: 50px;
+  margin-top: 20px;
 }

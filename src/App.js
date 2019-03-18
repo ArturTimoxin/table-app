@@ -21,13 +21,17 @@ class App extends Component {
   addRow = e => {
     // trim() - delete spases in string
     if (this.state.name.trim() && this.state.title.trim()) {
-      let status = document.getElementById("status").checked;
-      let newRow = { row: [nextID++, this.state.name, this.state.title, status], isEdit: false };
-      let newTable = this.state.table;
-      newTable.push(newRow);
-      this.setState({ table: newTable });
+      if (this.state.name.length < 30 && this.state.title.length < 30) {
+        let status = document.getElementById("status").checked;
+        let newRow = { row: [nextID++, this.state.name, this.state.title, status], isEdit: false };
+        let newTable = this.state.table;
+        newTable.push(newRow);
+        this.setState({ table: newTable });
+      } else {
+        this.setState({ error: "Text length in fields must not exceed 30 characters." });
+      }
     } else {
-      this.setState({ error: "You must enter all!" });
+      this.setState({ error: "Fill in all the fields" });
     }
   };
 
@@ -66,6 +70,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="wrapper">
+          <div className="titleEditForm">Table App</div>
           <div className="tableEditForm">
             <Input placeholder="Name" name="name" value={this.state.name} onChange={this.changeInput} />
 
@@ -76,17 +81,17 @@ class App extends Component {
             <Button color="green" onClick={this.addRow}>
               Add
             </Button>
-            <div className="error">{this.state.error}</div>
           </div>
+          <div className="error">{this.state.error}</div>
           <div className="table">
             <Table celled>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>ID</Table.HeaderCell>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                  <Table.HeaderCell>Title</Table.HeaderCell>
-                  <Table.HeaderCell>Status</Table.HeaderCell>
-                  <Table.HeaderCell>Controll</Table.HeaderCell>
+                  <Table.HeaderCell width={1}>ID</Table.HeaderCell>
+                  <Table.HeaderCell width={5}>Name</Table.HeaderCell>
+                  <Table.HeaderCell width={5}>Title</Table.HeaderCell>
+                  <Table.HeaderCell width={1}>Status</Table.HeaderCell>
+                  <Table.HeaderCell width={6}>Controll</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
